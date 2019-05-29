@@ -1,15 +1,3 @@
-# lexee
-Lexee example implementation for AWS
-
-Command to run the example:
-
-```bash
-python -m lexee eks.lexee
-```
-
-Example:
-
-```bash
 config {
    name = "EKS config language"
    exit_on_error = "False"
@@ -120,4 +108,3 @@ generator security attach_policy service {
 }
 
 
-```
