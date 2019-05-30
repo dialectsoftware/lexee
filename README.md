@@ -1,9 +1,17 @@
 # lexee
-Lexee example implementation for AWS
+Lexee example implementation for AWS IAM
+
+**Lexee** is an extensible interpreter for the **pylingo** declarative grammar. Lexee enables a programmer to quickly generate a DSL for virtually any purpose. Internally lexee maps the pylingo grammar to your custom classes. Syntactically pylingo is a very flexible grammar which allows you to express constructs with json and/or object syntax. Pylingo and by extension lexee has 5 basic constructs **config**, **variable**, **import**, **data** and **generator**. Config, for which there may be only one per document, is used to store runtime invariant data. Variables are used to capture runtime data, creating a contract between the runtime and the user. Imports bring in the namespaces from which data and generators can be bound. Data which are executable entities that retrieve data external to the environment at runtime and generators which effect state changes within the environment or within external resources. 
+
+Lexee executes on the **protolingo** runtime. This gives your DSL support for topological sorting and templating using {{ mustache }} syntax. Future versions of lexee will add the same state management features that are supported when using the YAML DSL natively supported by protolingo. The following example creates a DSL capable of creating roles and policies within AWS IAM, however, the grammar can be leveraged to perform any kind of function. This example is intended to demonstrate each one of the features of lexee in a manner that is hopefully self-explanatory. The example assumes that you have an AWS account and that you configure the AWS cli with a default profile (which will be leveraged by boto3). The example creates a policy and a role in your account and then attaches the customer managed policy as well as several AWS managed policies, necessary to manage an EKS cluster, to the role.  
+
 
 Command to run the example:
 
 ```bash
+pip install lexee
+pip install boto3
+aws configure
 python -m lexee eks.lexee
 ```
 
